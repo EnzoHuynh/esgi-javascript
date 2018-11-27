@@ -37,19 +37,25 @@ function leet(string) {
     return result;
 }
 
-function propAccess(string) {
-    var array = {
-        "prop_access" : {
-            "property" : {
-                "animals" : {
-                    "type" : {
-                        "name" : "dog",
-                    }
-                }
-            }
-        }
+function prop_access(input, path){
+    var pathArray = path.split(".");
+    for(var i = 0; i < pathArray.length; i++){
+      if(input[pathArray[i]] === undefined){
+        console.error('path exist');
+        return null;
+      }
+      input = input[pathArray[i]];
     }
-}
+    return input;
+   }
+   
+   console.log(prop_access({
+    "animal": {
+      "type": {
+        "name":"dog"
+      }
+    }
+   }, "animal.type.name"));
 
 // console.log(ucFirst('hello world'));
 // console.log(capitalize('hello world'));
